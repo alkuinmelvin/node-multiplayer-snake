@@ -16,7 +16,7 @@ node ('jenkins-agent-1'){
     stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
-            app.push("new")
+            app.push("latest")
         			}
          }
     /*stage('SECURITY-IMAGE-SCANNER'){
