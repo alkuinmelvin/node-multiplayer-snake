@@ -1,13 +1,12 @@
-node ('Ubuntu-app-agent'){  
+node ('jenkins-agent-1'){  
     def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
-    stage('SAST'){
+    /*stage('SAST'){
         build 'SECURITY-SAST-SNYK'
-    }
-
+    } */
     
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
@@ -20,9 +19,9 @@ node ('Ubuntu-app-agent'){
             app.push("latest")
         			}
          }
-    stage('SECURITY-IMAGE-SCANNER'){
+    /*stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
-    }
+    }*/
   
     
     stage('Pull-image-server') {
@@ -31,9 +30,9 @@ node ('Ubuntu-app-agent'){
          sh "docker-compose up -d"	
       }
     
-    stage('DAST')
+    /*stage('DAST')
         {
         build 'SECURITY-DAST-OWASP_ZAP'
-        }
+        } */
  
 }
