@@ -12,7 +12,7 @@ node ('jenkins-agent-1'){
     /* This builds the actual image; synonymous to
          * docker build on the command line */
     //    app = docker.build("alkuinmelvin/snake:new")
-    }
+    //}
     /*stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
