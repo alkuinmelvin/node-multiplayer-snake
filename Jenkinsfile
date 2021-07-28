@@ -8,10 +8,10 @@ node ('jenkins-agent-1'){
         build 'SECURITY-SAST-SNYK'
     } */
     
-    stage('Build-and-Tag') {
+    //stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("alkuinmelvin/snake:new")
+    //    app = docker.build("alkuinmelvin/snake:new")
     }
     /*stage('Post-to-dockerhub') {
     
