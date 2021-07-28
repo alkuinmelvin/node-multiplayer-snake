@@ -11,12 +11,12 @@ node ('jenkins-agent-1'){
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("amrit96/snake")
+        app = docker.build("alkuinmelvin/snake:new")
     }
     stage('Post-to-dockerhub') {
     
-     docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
-            app.push("latest")
+     docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
+            app.push("new")
         			}
          }
     /*stage('SECURITY-IMAGE-SCANNER'){
