@@ -13,22 +13,22 @@ node ('jenkins-agent-1'){
          * docker build on the command line */
         app = docker.build("alkuinmelvin/snake:new")
     }
-    stage('Post-to-dockerhub') {
+    /*stage('Post-to-dockerhub') {
     
      docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
             app.push("latest")
         			}
-         }
+         }*/
     /*stage('SECURITY-IMAGE-SCANNER'){
         build 'SECURITY-IMAGE-SCANNER-AQUAMICROSCANNER'
     }*/
   
     
-    stage('Pull-image-server') {
+    /*stage('Pull-image-server') {
     
          sh "docker-compose down"
          sh "docker-compose up -d"	
-      }
+      }*/
     
     /*stage('DAST')
         {
