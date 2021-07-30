@@ -1,14 +1,15 @@
 node ('ubuntu-agent'){  
+    def app
     stage('Cloning Git') {
-       checkout scm   
        /* Let's make sure we have the repository cloned to our workspace */
+       checkout scm   
     }  
 
-//    stage('Build-and-Tag') {
+    stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
-//        app = docker.build("alkuinmelvin/snake:new")
-//    }
+        app = docker.build("alkuinmelvin/snake:new")
+    }
 
     /*stage('Post-to-dockerhub') {
      docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
