@@ -12,15 +12,15 @@ node ('ubuntu-agent'){
     }
 
     stage('Post-to-dockerhub') {
-     docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
+     docker.withRegistry('https://registry.hub.docker.com', 'alkuinmelvin') {
             app.push("latest")
         			}
          }
 
-    stage('Pull-image-server') {
+    /*stage('Pull-image-server') {
          sh "docker-compose down"
          sh "docker-compose up -d"	
-      }
+      }*/
 }
 
 
