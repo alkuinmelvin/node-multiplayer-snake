@@ -12,7 +12,7 @@ node ('ubuntu-agent'){
     }
 
     stage('Post-to-dockerhub') {
-     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+     docker.withRegistry('https://registry.hub.docker.com', 'alkuin_docker') {
             app.push("latest")
         			}
          }
