@@ -17,7 +17,7 @@ node ('ubuntu-agent'){
         			}
          }
 
-    *stage('Pull-image-server') {
+    stage('Pull-image-server') {
          sh "docker-compose down"
          sh "docker-compose up -d"	
       }
