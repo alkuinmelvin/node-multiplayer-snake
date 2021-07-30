@@ -11,7 +11,7 @@ node ('ubuntu-agent'){
         app = docker.build("alkuinmelvin/snake")
     }
 
-    /*stage('Post-to-dockerhub') {
+    stage('Post-to-dockerhub') {
      docker.withRegistry('https://registry.hub.docker.com', 'Github and Jenkins Credential') {
             app.push("latest")
         			}
@@ -20,7 +20,7 @@ node ('ubuntu-agent'){
     stage('Pull-image-server') {
          sh "docker-compose down"
          sh "docker-compose up -d"	
-      }*/
+      }
 }
 
 
