@@ -1,4 +1,4 @@
-node ('jenkins-agent-1'){  
+node ('ubuntu-agent'){  
     stage('Cloning Git') {
        checkout scm   
     }  
