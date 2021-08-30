@@ -6,7 +6,7 @@ node ('ubuntu-agent'){
     }  
 
    stage('SAST'){
-        build 'SAST Snyk'  // name of SAST project
+        build 'SAST Snyk'  // name of SAST project in Jenkins
     }
 
     stage('Build-and-Tag') {
