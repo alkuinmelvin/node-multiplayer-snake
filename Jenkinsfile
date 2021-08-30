@@ -5,9 +5,9 @@ node ('ubuntu-agent'){
        checkout scm   
     }  
 
-   stage('SAST'){
-        build 'SAST Snyk'  // name of SAST project
-    }
+   //stage('SAST'){
+   //     build 'SAST Snyk'  // name of SAST project
+   // }
 
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
