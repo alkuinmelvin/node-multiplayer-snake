@@ -6,7 +6,14 @@ node ('ubuntu-agent'){
     }  
 
    stage('SAST'){
-        build 'SAST Snyk'  // name of SAST project in Jenkins
+     steps {
+        echo 'Testing...'
+        snykSecurity(
+          snykInstallation: Snyk V2,
+          snykTokenId: my-snyk-token,
+          // place other parameters here
+        )
+      }
     }
 
     stage('Build-and-Tag') {
