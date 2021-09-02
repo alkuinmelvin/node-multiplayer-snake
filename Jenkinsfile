@@ -7,8 +7,9 @@ node ('ubuntu-agent'){
 
    stage('SAST'){
      snykSecurity(
-          snykInstallation: 'Snyk V2',
-          snykTokenId: 'my-snyk-token',
+          snykSecurity failOnIssues: false, 
+          snykInstallation: 'Snyk V2', 
+          snykTokenId: 'my-snyk-token'
           // place other parameters here
      )
     }
