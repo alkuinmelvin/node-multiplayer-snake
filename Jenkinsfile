@@ -10,7 +10,7 @@ node ('ubuntu-agent'){
           snykSecurity failOnIssues: false, 
           snykInstallation: 'Snyk V2', 
           snykTokenId: 'my-snyk-token'
-          // place other parameters here
+          // place other parameters here, syntax generated using pipeline script generator in Jenkins
      )
     }
     
