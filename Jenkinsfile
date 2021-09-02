@@ -7,7 +7,7 @@ node ('ubuntu-agent'){
 
    stage('SAST'){
      snykSecurity(
-          snykSecurity failOnIssues: false, 
+          failOnIssues: false, 
           snykInstallation: 'Snyk V2', 
           snykTokenId: 'my-snyk-token'
           // place other parameters here, syntax generated using pipeline script generator in Jenkins
