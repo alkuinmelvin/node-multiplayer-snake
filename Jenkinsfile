@@ -5,6 +5,15 @@ node ('ubuntu-agent'){
        checkout scm   
     }  
 
+   stage('SAST'){
+     snykSecurity(
+          snykInstallation: 'Snyk V2',
+          snykTokenId: 'my-snyk-token',
+          // place other parameters here
+        )
+      }
+    }
+
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
