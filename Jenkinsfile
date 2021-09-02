@@ -9,8 +9,8 @@ node ('ubuntu-agent'){
      steps {
         echo 'Testing...'
         snykSecurity(
-          snykInstallation: Snyk V2,
-          snykTokenId: my-snyk-token,
+          snykInstallation: 'Snyk V2',
+          snykTokenId: 'my-snyk-token',
           // place other parameters here
         )
       }
