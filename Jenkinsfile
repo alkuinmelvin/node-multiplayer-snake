@@ -13,6 +13,21 @@ node ('ubuntu-agent'){
           // place other parameters here, syntax generated using pipeline script generator in Jenkins
      )
     }
+
+    stage("SAST SonarQube Analysis") {
+     steps {
+          withSonarQubeEnv('SonarQube') {   // name of SonarQube Configuration Installation in Jenkins
+          sh "${scannerHome}/bin/sonar-scanner"
+      }
+     }
+    }
+
+    stage("SAST SonarQube Quality gate") {
+     steps {
+          waitForQualityGate abortPipeline: true
+       }
+     }
+
    
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
