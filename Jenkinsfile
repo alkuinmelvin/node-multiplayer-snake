@@ -15,10 +15,9 @@ node ('ubuntu-agent'){
     }
 
     stage("SAST SonarQube Analysis") {
-     steps {
-          withSonarQubeEnv('SonarQube') {   // name of SonarQube Configuration Installation in Jenkins
-          sh "${scannerHome}/bin/sonar-scanner"
-      }
+      def scannerHome = tool 'SonarScanner';
+      withSonarQubeEnv('SonarQube') {   // name of SonarQube Server in Jenkins Configuration System) {
+        sh "${scannerHome}/bin/sonar-scanner"
      }
     }
 
