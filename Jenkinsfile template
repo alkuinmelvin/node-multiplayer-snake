@@ -8,6 +8,34 @@ node ('Ubuntu-app-agent'){
         build 'SECURITY-SAST-SNYK'
     }
 
+SonarQube
+pipeline {
+    agent any
+    stages {
+        stage('Clone sources') {
+            steps {
+                git url: 'https://github.com/tkgregory/sonarqube-jacoco-code-coverage.git'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "./gradlew sonarqube"
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+    }
+}
+
+
+
+
+
     
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
