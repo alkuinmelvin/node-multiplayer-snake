@@ -5,29 +5,16 @@ node ('ubuntu-agent'){
        checkout scm   
     }  
 
- //  stage('SAST SNYK'){
- //    snykSecurity(
- //         failOnIssues: false, 
- //         snykInstallation: 'Snyk V2', 
- //         snykTokenId: 'my-snyk-token'
- //         // place other parameters here, syntax generated using pipeline script generator in Jenkins
- //    )
- //   }
-
-    stage("SAST SonarQube Analysis") {
-      def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
-      withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
-        sh "${scannerHome}/bin/sonar-scanner"
-     }
+   stage('SAST SNYK'){
+     snykSecurity(
+          failOnIssues: false, 
+          snykInstallation: 'Snyk V2', 
+          snykTokenId: 'my-snyk-token'
+          // place other parameters here, syntax generated using pipeline script generator in Jenkins
+     )
     }
 
-    stage("SAST SonarQube Quality gate") {
-     steps {
-          waitForQualityGate abortPipeline: true
-       }
-     }
-
-   
+ 
     stage('Build-and-Tag') {
     /* This builds the actual image; synonymous to
          * docker build on the command line */
