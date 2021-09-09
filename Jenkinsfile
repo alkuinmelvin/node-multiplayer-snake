@@ -23,5 +23,4 @@ node ('ubuntu-agent'){
         sh "${scannerHome}/bin/sonar-scanner"
      }
     }
-
 }
