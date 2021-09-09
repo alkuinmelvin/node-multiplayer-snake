@@ -1,6 +1,8 @@
 node ('ubuntu-agent'){  
     def app
-
+      tools {
+        jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
+    }
     stage('Cloning Git') {
        /* Let's make sure we have the repository cloned to our workspace */
        checkout scm   
@@ -16,9 +18,6 @@ node ('ubuntu-agent'){
  //   }
 
     stage("SAST SonarQube Analysis") {
-      tools {
-        jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
-    }
     environment {
         scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
     }
