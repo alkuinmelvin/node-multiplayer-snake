@@ -1,11 +1,17 @@
 pipeline {
-    agent any
+    agent {
+      node  {
+         label 'ubuntu-agent'
+      }
+    }
     tools {
         jdk "jdk11"
     }
-    stage('Checkout code') {
-        steps {
-            checkout scm
-        }
-    }
+    stages {
+      stage('Prepare - Checkout code') {
+         steps {
+               git url: 'https://github.com/alkuinmelvin/node-multiplayer-snake.git'
+         }
+      }
+   }
 }
