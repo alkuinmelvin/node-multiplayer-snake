@@ -15,16 +15,8 @@ node ('ubuntu-agent'){
  //   }
 
     stage("SAST SonarQube Analysis") {
-    environment {
-        scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-    }
-    steps {
-        withSonarQubeEnv(installationName: 'SonarQube-Server') {
-            sh "${scannerHome}/bin/sonar-scanner -X"
-        }
- //     def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
- //     withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
-//        sh "${scannerHome}/bin/sonar-scanner"
+     def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
+     withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
+       sh "${scannerHome}/bin/sonar-scanner"
      }
-    }
-}
+   }
