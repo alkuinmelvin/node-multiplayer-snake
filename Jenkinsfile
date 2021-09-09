@@ -15,7 +15,9 @@ node ('ubuntu-agent'){
  //   }
 
     stage("SAST SonarQube Analysis") {
-     tool 'jdk11'
+     tools {
+        jdk 'jdk11'
+     }
      def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
      withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
        sh "${scannerHome}/bin/sonar-scanner"
