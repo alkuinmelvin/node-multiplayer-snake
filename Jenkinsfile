@@ -1,5 +1,9 @@
 node ('ubuntu-agent'){  
     def app
+     tools{
+     jdk 'jdk11'
+     }
+
     stage('Cloning Git') {
        /* Let's make sure we have the repository cloned to our workspace */
        checkout scm   
@@ -15,9 +19,6 @@ node ('ubuntu-agent'){
  //   }
 
     stage("SAST SonarQube Analysis") {
-      tools {
-        jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
-      }
       def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
       withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
         sh "${scannerHome}/bin/sonar-scanner"
