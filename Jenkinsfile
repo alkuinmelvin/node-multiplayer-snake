@@ -10,8 +10,15 @@ pipeline {
     stages {
       stage('Prepare - Checkout code') {
          steps {
-               git url: 'https://github.com/alkuinmelvin/node-multiplayer-snake.git'
+               checkout scm
          }
       }
+
+//      stage('SonarQube Analysis') {
+//         steps {
+//               git url: 'https://github.com/alkuinmelvin/node-multiplayer-snake.git'
+//         }
+//      }
+
    }
 }
