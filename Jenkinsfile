@@ -15,7 +15,6 @@ pipeline {
       }
 
       stage('SonarQube analysis') {
-         agent {     docker   'maven:3-alpine'   }
          tools {
             jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
          }
