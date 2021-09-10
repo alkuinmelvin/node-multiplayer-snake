@@ -14,6 +14,15 @@ pipeline {
          }
       }
 
+      stage("SAST SonarQube Analysis") {
+         steps {
+            def scannerHome = tool 'SonarQube-Scanner';  // name of scanner in Jenkins Global Tool Configuration
+            withSonarQubeEnv('SonarQube-Server') {   // name of SonarQube Server in Jenkins Configuration System) {
+            sh "${scannerHome}/bin/sonar-scanner"
+            }
+         }
+      }  
+
       stage('SAST SNYK'){
          steps{
          snykSecurity(
@@ -50,11 +59,5 @@ pipeline {
             sh "docker-compose up -d"
          }	
       }
-//      stage('SonarQube Analysis') {
-//         steps {
-//               git url: 'https://github.com/alkuinmelvin/node-multiplayer-snake.git'
-//         }
-//      }
-
    }
 }
