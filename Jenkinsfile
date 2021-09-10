@@ -29,7 +29,7 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-            docker.build("alkuinmelvin/snake")
+            sh 'docker build -t alkuinmelvin/snake'
         }
       }
 
