@@ -37,8 +37,9 @@ pipeline {
 
       stage('Post-to-dockerhub') {
          steps{
-            withDockerRegistry([ credentialsId: "alkuin_docker", url: "https://registry.hub.docker.com" ]) {
+            withDockerRegistry([ credentialsId: "alkuin_docker", url: "" ]) {
             sh  'docker push alkuinmelvin/snake:latest'
+            sh  'docker push alkuinmelvin/snake:$BUILD_NUMBER'
             }
          }
       }
