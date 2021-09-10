@@ -29,11 +29,8 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-         script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                }
-         //   sh 'docker build -t alkuinmelvin/snake:latest .'
-        }
+            sh 'docker build -f alkuinmelvin/snake:latest .'
+         }
       }
 
       stage('Post-to-dockerhub') {
