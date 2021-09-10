@@ -20,7 +20,8 @@ pipeline {
          }
          steps {
             withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
-                  sh "${scannerHome}/bin/sonar-scanner -X"
+                  //sh "${scannerHome}/bin/sonar-scanner -X"
+                  sh 'mvn clean package sonar:sonar'
             }
          }
       }
