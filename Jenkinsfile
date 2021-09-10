@@ -4,6 +4,7 @@ pipeline {
          label 'ubuntu-agent'
       }
     }
+    def app
     tools {
         jdk "jdk11"
     }
@@ -29,13 +30,13 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-            app = docker.build("amrit96/snake")
+            app = docker.build("alkuinmelvin/snake")
         }
       }
 
       stage('Post-to-dockerhub') {
          steps{
-            docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
+            docker.withRegistry('https://registry.hub.docker.com', 'alkuin_docker') {
             app.push("latest")
             }
          }
