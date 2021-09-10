@@ -29,7 +29,9 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-            sh 'docker build -f alkuinmelvin/snake:latest .'
+            sh 'docker build -t snake:latest .'
+            sh 'docker tag nginxtest alkuinmelvin/snake:latest'
+                sh 'docker tag nginxtest alkuinmelvin/snake:$BUILD_NUMBER'
          }
       }
 
