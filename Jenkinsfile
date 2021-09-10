@@ -29,8 +29,7 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-            def app
-            app = docker.build("alkuinmelvin/snake")
+            docker.build("alkuinmelvin/snake")
         }
       }
 
