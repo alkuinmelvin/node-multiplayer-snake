@@ -18,11 +18,11 @@ pipeline {
          tools {
             jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
          }
-         echo $JAVA_HOME
          environment {
             scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
          }
          steps {
+            echo $JAVA_HOME
             withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
                   sh "${scannerHome}/bin/sonar-scanner -X"
             }
