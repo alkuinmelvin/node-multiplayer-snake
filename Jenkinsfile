@@ -4,7 +4,6 @@ pipeline {
          label 'ubuntu-agent'
       }
     }
-    def app
     tools {
         jdk "jdk11"
     }
@@ -30,6 +29,7 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
+            def app
             app = docker.build("alkuinmelvin/snake")
         }
       }
