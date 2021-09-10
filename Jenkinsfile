@@ -30,8 +30,8 @@ pipeline {
          /* This builds the actual image; synonymous to
          * docker build on the command line */
             sh 'docker build -t snake:latest .'
-            sh 'docker tag nginxtest alkuinmelvin/snake:latest'
-                sh 'docker tag nginxtest alkuinmelvin/snake:$BUILD_NUMBER'
+            sh 'docker tag snake alkuinmelvin/snake:latest'
+                sh 'docker tag snake alkuinmelvin/snake:$BUILD_NUMBER'
          }
       }
 
