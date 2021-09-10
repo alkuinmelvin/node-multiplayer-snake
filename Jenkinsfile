@@ -15,14 +15,12 @@ pipeline {
       }
 
       stage('SonarQube analysis') {
- //        environment {
- //           scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-//         }
+         environment {
+            scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+         }
          steps {
-            withSonarQubeEnv('SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
-                  //sh "${scannerHome}/bin/sonar-scanner -X"
-                   withMaven(maven:'Maven 3.8.2') {
-                        sh 'mvn clean package sonar:sonar'
+            withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
+                  sh "${scannerHome}/bin/sonar-scanner -X"
             }
          }
        }
