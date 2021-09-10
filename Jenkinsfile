@@ -15,6 +15,7 @@ pipeline {
       }
 
       stage('SonarQube analysis') {
+         agent {     docker   'maven:3-alpine'   }
          tools {
             jdk "jdk11" // the name you have given the JDK installation in Global Tool Configuration
          }
@@ -23,7 +24,7 @@ pipeline {
          }
          steps {
             withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
-                  sh "${scannerHome}/bin/sonar-scanner -X"
+                  sh "${scannerHome}/bin/sonar-scanner"
             }
          }
       }
