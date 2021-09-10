@@ -29,14 +29,14 @@ pipeline {
          steps{
          /* This builds the actual image; synonymous to
          * docker build on the command line */
-            sh 'docker build -t alkuinmelvin/snake'
+            sh 'docker build -t alkuinmelvin/snake:latest'
         }
       }
 
       stage('Post-to-dockerhub') {
          steps{
-            docker.withRegistry('https://registry.hub.docker.com', 'alkuin_docker') {
-            app.push("latest")
+            withDockerRegistry([ credentialsId: "alkuin_docker", url: "https://registry.hub.docker.com" ]) {
+            sh  'docker push alkuinmelvin/snake:latest'
             }
          }
       }
