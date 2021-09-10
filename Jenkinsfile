@@ -24,7 +24,6 @@ pipeline {
             }
          }
        }
-      }
       
       stage('SAST SNYK'){
          steps{
