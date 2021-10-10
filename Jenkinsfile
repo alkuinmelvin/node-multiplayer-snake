@@ -14,16 +14,17 @@ pipeline {
          }
       }
 
-      stage('SonarQube analysis') {
-         environment {
-            scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-         }
-         steps {
-            withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
-                  sh "${scannerHome}/bin/sonar-scanner -X"
-            }
-         }
-       }
+//      stage('SonarQube analysis') {
+//         environment {
+//            scannerHome = tool 'SonarQube-Scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+//         }
+//         steps {
+//            withSonarQubeEnv(installationName: 'SonarQube-Server') {  // name of SonarQube Server in Jenkins Configuration System
+//                  sh "${scannerHome}/bin/sonar-scanner -X"
+//            }
+//         }
+//       }
+//    Could not find 'java' executable in JAVA_HOME or PATH!!! < Remove this line when execute pipeline again
       
       stage('SAST SNYK'){
          steps{
